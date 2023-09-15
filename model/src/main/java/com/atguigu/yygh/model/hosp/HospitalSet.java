@@ -18,7 +18,7 @@ import lombok.Data;
 @ApiModel(description = "医院设置")
 @TableName("hospital_set")
 public class HospitalSet extends BaseEntity {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	@ApiModelProperty(value = "医院名称")
@@ -48,6 +48,10 @@ public class HospitalSet extends BaseEntity {
 	@ApiModelProperty(value = "状态")
 	@TableField("status")
 	private Integer status;
+
+	@ApiModelProperty(value = "是否删除")
+	@TableField("is_deleted")
+	private Integer isDelete;
 
 }
 
