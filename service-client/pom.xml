@@ -14,7 +14,7 @@
     <packaging>pom</packaging>
     <version>1.0</version>
     <modules>
-        <module>service_cmn_client</module>
+        <module>service-cmn-client</module>
         <module>service-user-client</module>
         <module>service-hosp-client</module>
     </modules>

@@ -32,7 +32,7 @@
 
         <dependency>
             <groupId>com.atguigu.yygh</groupId>
-            <artifactId>service_cmn_client</artifactId>
+            <artifactId>service-cmn-client</artifactId>
             <version>1.0</version>
             <scope>compile</scope>
         </dependency>

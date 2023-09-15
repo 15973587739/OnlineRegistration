@@ -49,10 +49,19 @@
             <scope>compile</scope>
         </dependency>
         <!--web-->
+        <!-- spring-boot-starter-web 依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <!-- spring-boot-starter-amqp 依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+        <!--spring-boot-starter-amqp是一个Spring Boot提供的用于与AMQP（高级消息队列协议）进行交互的起始依赖。
+            通过将此依赖项添加到项目中，你可以使用Spring Boot提供的AMQP相关功能，如发送和接收消息到消息队列等。-->
+
         <!--mybatis-plus-->
         <dependency>
             <groupId>com.baomidou</groupId>
