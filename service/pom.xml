@@ -23,15 +23,30 @@
     <packaging>pom</packaging>
     <version>1.0</version>
     <dependencies>
+        <!-- service-util 依赖 -->
         <dependency>
             <groupId>com.atguigu.yygh</groupId>
             <artifactId>service-util</artifactId>
             <version>1.0</version>
         </dependency>
+        <!-- model 依赖 -->
         <dependency>
             <groupId>com.atguigu.yygh</groupId>
             <artifactId>model</artifactId>
             <version>1.0</version>
+        </dependency>
+        <!-- model 依赖 -->
+        <dependency>
+            <groupId>com.atguigu.yygh</groupId>
+            <artifactId>model</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <!--swagger-->
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>1.6.2</version>
+            <scope>compile</scope>
         </dependency>
         <!--web-->
         <dependency>
