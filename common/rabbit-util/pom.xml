@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>rabbit_util</artifactId>
+    <artifactId>rabbit-util</artifactId>
 
     <dependencies>
         <!--rabbitmq消息队列-->
