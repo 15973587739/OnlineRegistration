@@ -22,7 +22,7 @@ public interface OrderFeignClient {
      * @param orderCountQueryVo 包含查询条件的OrderCountQueryVo对象。
      * @return 包含统计结果的键值对。
      */
-    @PostMapping("/api/order/orderInfo/inner/getCountMap")
+    @PostMapping("/admin/order/orderInfo/inner/getCountMap")
     public Map<String, Object> getCountMap(@RequestBody OrderCountQueryVo orderCountQueryVo);
     /**
      * 以上是一个使用Feign进行服务间通信的接口定义。该接口使用@FeignClient注解指定了要调用的服务名为service-order。接口还添加了@Repository注解，表示该接口用于数据访问。

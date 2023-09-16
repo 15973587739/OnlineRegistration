@@ -88,17 +88,17 @@ public class OrderController {
         return Result.ok(map);
     }
 
-//    /**
-//     * 获取订单统计数据
-//     *
-//     * @param orderCountQueryVo 订单统计查询对象
-//     * @return 订单统计数据的Map对象
-//     */
-//    @ApiOperation(value = "获取订单统计数据")
-//    @PostMapping("inner/getCountMap")
-//    public Map<String, Object> getCountMap(@RequestBody OrderCountQueryVo orderCountQueryVo) {
-//        return orderService.getCountMap(orderCountQueryVo);
-//    }
+    /**
+     * 获取订单统计数据
+     *
+     * @param orderCountQueryVo 订单统计查询对象
+     * @return 订单统计数据的Map对象
+     */
+    @ApiOperation(value = "获取订单统计数据")
+    @PostMapping("inner/getCountMap")
+    public Map<String, Object> getCountMap(@RequestBody OrderCountQueryVo orderCountQueryVo) {
+        return orderService.getCountMap(orderCountQueryVo);
+    }
 
     /**
      * 取消预约

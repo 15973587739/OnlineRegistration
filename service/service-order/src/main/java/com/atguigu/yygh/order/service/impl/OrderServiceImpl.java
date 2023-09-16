@@ -227,11 +227,11 @@ public class OrderServiceImpl extends
             queryWrapper.le("create_time",createTimeEnd);
         }
         //根据创建时间降序
-        queryWrapper.orderByDesc("create_time");
+//        queryWrapper.orderByDesc("create_time");
         IPage<OrderInfo> pages = baseMapper.selectPage(pageParam, queryWrapper);
         //编号编程对应的封装值
         pages.getRecords().stream().forEach(item ->{
-             this.packOrderInfo(item);
+            this.packOrderInfo(item);
         });
         return pages;
     }
@@ -354,11 +354,52 @@ public class OrderServiceImpl extends
     }
 
     /**
-     * 患者提醒
+     * 患者提示方法
+     */
+    public void patientTips() {
+        // 查询当天的预约订单信息
+        QueryWrapper<OrderInfo> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("reserve_date", new DateTime().toString("yyyy-MM-dd"));
+        List<OrderInfo> orderInfoList = baseMapper.selectList(queryWrapper);
+
+        // 遍历订单信息列表
+        for (OrderInfo orderInfo : orderInfoList) {
+            // 发送短信提示
+            MsmVo msmVo = new MsmVo();
+            msmVo.setPhone(orderInfo.getPatientPhone());
+
+            // 构造消息参数
+            String reserveDate = new DateTime(orderInfo.getReserveDate()).toString("yyyy-MM-dd") + (orderInfo.getReserveTime() == 0 ? "上午" : "下午");
+            Map<String, Object> param = new HashMap<String, Object>() {{
+                put("title", orderInfo.getHosname() + "|" + orderInfo.getDepname() + "|" + orderInfo.getTitle());
+                put("reserveDate", reserveDate);
+                put("name", orderInfo.getPatientName());
+            }};
+            msmVo.setParam(param);
+
+            // 发送消息到消息队列进行短信发送
+            rabbitService.sendMessage(MqConst.EXCHANGE_DIRECT_MSM, MqConst.ROUTING_MSM_ITEM, msmVo);
+        }
+    }
+
+    /**
+     * 获取订单统计数据
+     *
+     * @param orderCountQueryVo 订单统计查询对象
+     * @return 订单统计数据的Map对象
      */
     @Override
-    public void patientTips() {
-
+    public Map<String, Object> getCountMap(OrderCountQueryVo orderCountQueryVo) {
+        //获取数据
+        List<OrderCountVo> orderCountVoList = baseMapper.selectOrderCount(orderCountQueryVo);
+        //获取x轴数据，日期数据
+        List<String> dateList = orderCountVoList.stream().map(OrderCountVo::getReserveDate).collect(Collectors.toList());
+        //y轴数据，具体数量
+        List<Integer> countList = orderCountVoList.stream().map(OrderCountVo::getCount).collect(Collectors.toList());
+        Map<String,Object> map = new HashMap<>();
+        map.put("dateList",dateList);
+        map.put("countList",countList);
+        return map;
     }
 
 

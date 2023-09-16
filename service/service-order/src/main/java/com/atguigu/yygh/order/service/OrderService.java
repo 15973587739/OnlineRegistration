@@ -1,10 +1,13 @@
 package com.atguigu.yygh.order.service;
 
 import com.atguigu.yygh.model.order.OrderInfo;
+import com.atguigu.yygh.vo.order.OrderCountQueryVo;
 import com.atguigu.yygh.vo.order.OrderQueryVo;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.Map;
 
 /**
  * 订单服务接口
@@ -44,6 +47,14 @@ public interface OrderService extends IService<OrderInfo> {
      * @return 取消成功返回true，否则返回false
      */
     Boolean cancelOrder(Long orderId);
+
+    /**
+     * 获取订单统计数据
+     *
+     * @param orderCountQueryVo 订单统计查询对象
+     * @return 订单统计数据的Map对象
+     */
+    Map<String, Object> getCountMap(OrderCountQueryVo orderCountQueryVo);
 
     /**
      * 患者提醒
