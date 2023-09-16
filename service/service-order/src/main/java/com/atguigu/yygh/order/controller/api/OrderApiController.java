@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 /**
  * @author SIYU
@@ -105,16 +106,6 @@ public class OrderApiController {
         return Result.ok(isOrder);
     }
 
-//    /**
-//     * 获取订单统计数据
-//     *
-//     * @param orderCountQueryVo 订单统计查询对象
-//     * @return 订单统计数据的Map对象
-//     */
-//    @ApiOperation(value = "获取订单统计数据")
-//    @PostMapping("inner/getCountMap")
-//    public Map<String, Object> getCountMap(@RequestBody OrderCountQueryVo orderCountQueryVo) {
-//        return orderService.getCountMap(orderCountQueryVo);
-//    }
+
 
 }

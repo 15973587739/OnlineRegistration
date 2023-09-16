@@ -11,6 +11,7 @@ import java.util.Map;
 
 /**
  * OrderFeignClient是用于与service-order服务进行通信的Feign客户端接口。
+ * @author SIYU
  */
 @FeignClient(value = "service-order")
 @Repository
