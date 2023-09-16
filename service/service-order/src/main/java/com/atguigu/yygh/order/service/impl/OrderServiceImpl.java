@@ -227,7 +227,7 @@ public class OrderServiceImpl extends
             queryWrapper.le("create_time",createTimeEnd);
         }
         //根据创建时间降序
-//        queryWrapper.orderByDesc("create_time");
+        queryWrapper.orderByDesc("create_time");
         IPage<OrderInfo> pages = baseMapper.selectPage(pageParam, queryWrapper);
         //编号编程对应的封装值
         pages.getRecords().stream().forEach(item ->{
